@@ -1,17 +1,27 @@
 version: '3.8'
 
 services:
-  examen1app:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "TuPasswordSegura"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+
+  examen1-ui:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: examen1_container
+      dockerfile: Dockerfile.app
     ports:
-      - "80:80"
-      - "1433:1433"
+      - "5000:80"
+    depends_on:
+      - sqlserver
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=TuPasswordSegura
-    volumes:
-      - ./publish:/app
-    entrypoint: ["/start.sh"]
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Examen1;User Id=sa;Password=TuPasswordSegura;
+
+volumes:
+  sqlserverdata:
+
