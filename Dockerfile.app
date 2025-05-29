@@ -3,5 +3,6 @@ WORKDIR /app
 
 COPY ./Examen1.UI/publish .
 
-ENTRYPOINT ["dotnet", "Examen1.UI.dll"]
+ENTRYPOINT ["sh", "-c", "sleep 15 && dotnet Examen1.UI.dll"]
+
 
