@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Examen1.Model.Apartamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Apartamentos disponibles</h1>
+
+
+<form asp-controller="Disponibles" asp-action="Index" method="get">
+    <p>
+        Nombre: <input type="text" name="nombre" />
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+           <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDePiso)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroDePiso)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Alquile", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+
+  
+</table>

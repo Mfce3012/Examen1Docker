@@ -1,0 +1,50 @@
+﻿@model Examen1.Model.Apartamento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Alquilar apartamento</h1>
+
+<h4>Apartamento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="IdentificacionInquilino" class="control-label"></label>
+                <input asp-for="IdentificacionInquilino" class="form-control" />
+                <span asp-validation-for="IdentificacionInquilino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreInquilino" class="control-label"></label>
+                <input asp-for="NombreInquilino" class="form-control" />
+                <span asp-validation-for="NombreInquilino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicioAlquiler" class="control-label"></label>
+                <input asp-for="FechaInicioAlquiler" class="form-control" />
+                <span asp-validation-for="FechaInicioAlquiler" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantidadDeMesesAlquiler" class="control-label"></label>
+                <input asp-for="CantidadDeMesesAlquiler" class="form-control" />
+                <span asp-validation-for="CantidadDeMesesAlquiler" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

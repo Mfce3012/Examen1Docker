@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  examen1app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: examen1_container
+    ports:
+      - "80:80"
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TuPasswordSegura
+    volumes:
+      - ./publish:/app
+    entrypoint: ["/start.sh"]
