@@ -20,7 +20,7 @@ services:
     depends_on:
       - sqlserver
     environment:
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Examen1;User Id=sa;Password=TuPasswordSegura;
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=Examen1;User Id=sa;Password=MiPass123!;
 
 volumes:
   sqlserverdata:
